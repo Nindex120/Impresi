@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Rubén Pedrazo Cumbreño">
+    <meta name="description" content="Administración del catálogo, pedidos y opiniones de Impresi.">
+    <title>Administración | Impresi</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="app.js" defer></script>
+    <script src="admin.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a class="brand" href="index.html" aria-label="Impresi, inicio"><span class="brand-mark">I</span>impresi<span class="brand-dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Impresion3D.html">Impresión 3D</a></li>
+                <li><a href="Mantenimiento.html">Mantenimiento</a></li>
+                <li><a href="Opiniones.html">Reseñas</a></li>
+                <li><a class="active" href="admin.html">Administración</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="admin-main container">
+        <section class="admin-heading">
+            <span class="eyebrow">Espacio de gestión</span>
+            <h1>Panel de <span class="text-accent">administración.</span></h1>
+            <p>Gestiona los productos de la tienda, organiza los pedidos y revisa las opiniones antes de publicarlas.</p>
+        </section>
+
+        <aside class="admin-warning" role="note">
+            <strong>Modo de demostración:</strong> estos datos se guardan solo en este navegador. Este panel no tiene inicio de sesión ni control de acceso; no lo publiques como panel privado hasta conectarlo a un servidor con autenticación.
+        </aside>
+        <p id="admin-message" class="admin-message" role="status" aria-live="polite"></p>
+
+        <nav class="admin-tabs" aria-label="Secciones de administración">
+            <button type="button" class="admin-tab active" data-panel="store" aria-selected="true">Tienda <span id="product-count" class="tab-count">0</span></button>
+            <button type="button" class="admin-tab" data-panel="orders" aria-selected="false">Pedidos <span id="order-count" class="tab-count">0</span></button>
+            <button type="button" class="admin-tab" data-panel="reviews" aria-selected="false">Opiniones <span id="review-count" class="tab-count">0</span></button>
+        </nav>
+
+        <section class="admin-panel active" id="panel-store" aria-labelledby="store-title">
+            <div class="admin-section-heading">
+                <div><span class="eyebrow">Catálogo</span><h2 id="store-title">Administración de tienda</h2></div>
+                <p>Añade, edita o elimina productos. Los cambios se reflejan en el catálogo de inicio.</p>
+            </div>
+            <div class="admin-columns">
+                <form id="product-form" class="admin-form">
+                    <h3 id="product-form-title">Añadir producto</h3>
+                    <input type="hidden" name="id">
+                    <label for="product-name">Nombre</label>
+                    <input id="product-name" name="name" type="text" maxlength="70" required>
+                    <label for="product-category">Categoría</label>
+                    <select id="product-category" name="category" required>
+                        <option value="hogar">Hogar</option>
+                        <option value="escritorio">Escritorio</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="personalizados">Personalizados</option>
+                    </select>
+                    <label for="product-description">Descripción</label>
+                    <textarea id="product-description" name="description" rows="3" maxlength="200" required></textarea>
+                    <label for="product-price">Precio (€)</label>
+                    <input id="product-price" name="price" type="number" min="0.01" max="99999" step="0.01" required>
+                    <div class="admin-form-actions">
+                        <button class="button button-primary" type="submit" id="product-save">Añadir producto</button>
+                        <button class="button button-quiet" type="button" id="product-cancel" hidden>Cancelar</button>
+                    </div>
+                </form>
+                <div class="admin-list-wrap">
+                    <div class="admin-list-heading"><h3>Productos</h3><span id="product-list-summary"></span></div>
+                    <div id="admin-products" class="admin-list" aria-live="polite"></div>
+                    <p id="products-empty" class="admin-empty" hidden>No hay productos en la tienda.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="admin-panel" id="panel-orders" aria-labelledby="orders-title" hidden>
+            <div class="admin-section-heading">
+                <div><span class="eyebrow">Seguimiento</span><h2 id="orders-title">Administración de pedidos</h2></div>
+                <p>Registra pedidos recibidos y actualiza su estado. El sitio aún no procesa compras en línea.</p>
+            </div>
+            <form id="order-form" class="admin-form order-form">
+                <h3>Registrar pedido</h3>
+                <div class="order-fields">
+                    <div><label for="order-customer">Cliente</label><input id="order-customer" name="customer" type="text" maxlength="70" required></div>
+                    <div><label for="order-item">Producto o servicio</label><input id="order-item" name="item" type="text" maxlength="100" required></div>
+                    <div><label for="order-total">Total (€)</label><input id="order-total" name="total" type="number" min="0.01" max="999999" step="0.01" required></div>
+                    <div><label for="order-status">Estado inicial</label><select id="order-status" name="status"><option value="Pendiente">Pendiente</option><option value="En preparación">En preparación</option><option value="Enviado">Enviado</option><option value="Entregado">Entregado</option><option value="Cancelado">Cancelado</option></select></div>
+                </div>
+                <button class="button button-primary" type="submit">Guardar pedido</button>
+            </form>
+            <div class="admin-list-heading orders-list-heading"><h3>Pedidos registrados</h3><span id="order-list-summary"></span></div>
+            <div id="admin-orders" class="admin-list" aria-live="polite"></div>
+            <p id="orders-empty" class="admin-empty" hidden>No hay pedidos registrados todavía. Puedes añadir uno cuando recibas un encargo.</p>
+        </section>
+
+        <section class="admin-panel" id="panel-reviews" aria-labelledby="reviews-title" hidden>
+            <div class="admin-section-heading">
+                <div><span class="eyebrow">Moderación</span><h2 id="reviews-title">Administración de opiniones</h2></div>
+                <p>Aprueba las reseñas para publicarlas o elimínalas. Las opiniones nuevas quedan pendientes de revisión.</p>
+            </div>
+            <div class="admin-list-heading"><h3>Opiniones recibidas</h3><span id="review-list-summary"></span></div>
+            <div id="admin-reviews" class="admin-list" aria-live="polite"></div>
+            <p id="reviews-empty" class="admin-empty" hidden>No hay opiniones pendientes ni publicadas.</p>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand footer-brand" href="index.html"><span class="brand-mark">I</span>impresi<span class="brand-dot">.</span></a>
+            <p>Impresión 3D y mantenimiento, con cuidado en cada detalle.</p>
+            <span>© <span id="current-year"></span> Impresi</span>
+        </div>
+    </footer>
+</body>
+</html>

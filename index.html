@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Rubén Pedrazo Cumbreño">
+    <meta name="description" content="Diseño e impresión 3D y mantenimiento de consolas. Descubre el catálogo de Impresi.">
+    <title>Impresi | Impresión 3D y mantenimiento</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a class="brand" href="index.html" aria-label="Impresi, inicio"><span class="brand-mark">I</span>impresi<span class="brand-dot">.</span></a>
+            <ul class="nav-links">
+                <li><a class="active" href="index.html">Inicio</a></li>
+                <li><a href="Impresion3D.html">Impresión 3D</a></li>
+                <li><a href="Mantenimiento.html">Mantenimiento</a></li>
+                <li><a href="Opiniones.html">Reseñas</a></li>
+                <li><a href="admin.html">Administración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-copy">
+                <span class="eyebrow"><span class="status-dot"></span> Ideas que toman forma</span>
+                <h1>Diseñamos. Imprimimos.<br><span>Lo hacemos durar.</span></h1>
+                <p>Impresión 3D a tu medida y cuidado experto para tus consolas. Un mismo sitio para tus ideas y tus partidas.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#catalogo">Explorar catálogo <span aria-hidden="true">↓</span></a>
+                    <a class="button button-quiet" href="Mantenimiento.html">Ver mantenimiento <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="hero-note"><span aria-hidden="true">✦</span> Hecho con atención al detalle</div>
+            </div>
+            <div class="hero-art" aria-label="Ilustración decorativa de una pieza impresa en 3D" role="img">
+                <div class="art-orbit orbit-one"></div>
+                <div class="art-orbit orbit-two"></div>
+                <div class="art-cube"><span></span><i></i></div>
+                <div class="art-label label-top">DISEÑO · 3D</div>
+                <div class="art-label label-bottom">HECHO PARA TI</div>
+                <div class="art-spark spark-one">✳</div>
+                <div class="art-spark spark-two">✦</div>
+            </div>
+        </section>
+
+        <section class="services container" aria-label="Nuestros servicios">
+            <a class="service-card" href="Impresion3D.html">
+                <span class="service-icon icon-purple" aria-hidden="true">◈</span>
+                <span><strong>Impresión 3D</strong><small>Del filamento a tu idea</small></span>
+                <span class="service-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="service-card" href="Mantenimiento.html">
+                <span class="service-icon icon-green" aria-hidden="true">⌁</span>
+                <span><strong>Mantenimiento</strong><small>Cuida tu equipo y sigue jugando</small></span>
+                <span class="service-arrow" aria-hidden="true">↗</span>
+            </a>
+        </section>
+
+        <section class="catalog section container" id="catalogo">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">Una selección para inspirarte</span>
+                    <h2>Catálogo <span class="text-accent">3D</span></h2>
+                </div>
+                <p class="sample-note">Productos y precios de muestra; consulta disponibilidad y personalización.</p>
+            </div>
+            <div class="catalog-controls">
+                <label class="search-box">
+                    <span class="sr-only">Buscar productos</span>
+                    <span aria-hidden="true">⌕</span>
+                    <input id="product-search" type="search" placeholder="¿Qué estás buscando?" autocomplete="off">
+                </label>
+                <label class="filter-box">
+                    <span class="sr-only">Filtrar por categoría</span>
+                    <select id="category-filter">
+                        <option value="all">Todas las categorías</option>
+                        <option value="hogar">Hogar</option>
+                        <option value="escritorio">Escritorio</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="personalizados">Personalizados</option>
+                    </select>
+                </label>
+            </div>
+            <div class="product-grid" id="product-grid" aria-live="polite"></div>
+            <p class="empty-state" id="empty-products" hidden>No encontramos productos con esos criterios. Prueba otra búsqueda.</p>
+            <div class="pagination" id="pagination" aria-label="Paginación del catálogo"></div>
+        </section>
+
+        <section class="bottom-cta">
+            <div class="container cta-inner">
+                <div><span class="eyebrow">¿Tienes una idea?</span><h2>Hablemos de lo que<br>quieres crear.</h2></div>
+                <a class="button button-light" href="Impresion3D.html">Descubre la impresión 3D <span aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand footer-brand" href="index.html"><span class="brand-mark">I</span>impresi<span class="brand-dot">.</span></a>
+            <p>Impresión 3D y mantenimiento, con cuidado en cada detalle.</p>
+            <span>© <span id="current-year"></span> Impresi</span>
+        </div>
+    </footer>
+</body>
+</html>

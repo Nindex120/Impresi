@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Rubén Pedrazo Cumbreño">
+    <meta name="description" content="Lee y comparte opiniones sobre los productos y servicios de Impresi.">
+    <title>Reseñas | Impresi</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a class="brand" href="index.html" aria-label="Impresi, inicio"><span class="brand-mark">I</span>impresi<span class="brand-dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Impresion3D.html">Impresión 3D</a></li>
+                <li><a href="Mantenimiento.html">Mantenimiento</a></li>
+                <li><a class="active" href="Opiniones.html">Reseñas</a></li>
+                <li><a href="admin.html">Administración</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="page-hero container reviews-hero">
+            <span class="eyebrow">La experiencia también cuenta</span>
+            <h1>Palabras que<br><span class="text-accent">nos inspiran.</span></h1>
+            <p>¿Has probado un producto o servicio? Comparte tu experiencia y ayuda a otras personas a conocernos.</p>
+        </section>
+        <section class="section container reviews-layout">
+            <div class="review-list-column">
+                <div class="section-heading review-heading"><div><span class="eyebrow">Experiencias reales</span><h2>Reseñas</h2></div></div>
+                <div id="review-list" class="review-list" aria-live="polite"></div>
+                <p id="empty-reviews" class="empty-state">Aún no hay reseñas publicadas. Las nuevas opiniones aparecen después de su revisión.</p>
+                <p class="storage-note">Las reseñas que añadas aquí se guardan solo en este navegador y dispositivo.</p>
+            </div>
+            <form class="review-form" id="review-form">
+                <span class="eyebrow">Tu opinión</span>
+                <h2>Cuéntanos tu experiencia.</h2>
+                <label for="review-name">Nombre</label>
+                <input id="review-name" name="name" type="text" maxlength="40" placeholder="¿Cómo te llamas?" required>
+                <label for="review-category">¿Qué probaste?</label>
+                <select id="review-category" name="category" required>
+                    <option value="" disabled selected>Elige una categoría</option>
+                    <option>Impresión 3D</option>
+                    <option>Mantenimiento</option>
+                    <option>Otro</option>
+                </select>
+                <label for="review-rating">Valoración</label>
+                <select id="review-rating" name="rating" required>
+                    <option value="5">★★★★★ — Me encantó</option>
+                    <option value="4">★★★★☆ — Muy bien</option>
+                    <option value="3">★★★☆☆ — Bien</option>
+                    <option value="2">★★☆☆☆ — Podría mejorar</option>
+                    <option value="1">★☆☆☆☆ — No era lo esperado</option>
+                </select>
+                <label for="review-text">Tu reseña</label>
+                <textarea id="review-text" name="text" rows="4" maxlength="500" placeholder="¿Qué te ha parecido?" required></textarea>
+                <button class="button button-primary submit-button" type="submit">Publicar reseña <span aria-hidden="true">↗</span></button>
+                <p class="form-message" id="review-message" role="status"></p>
+            </form>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">I</span>impresi<span class="brand-dot">.</span></a><p>Impresión 3D y mantenimiento, con cuidado en cada detalle.</p><span>© <span class="year"></span> Impresi</span></div></footer>
+</body>
+</html>
